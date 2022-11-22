@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>SQL Injection</title>
+    <headline>Search Employees</headline>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="https://hunter2labs.s3.amazonaws.com/common.css">
+    <script src='https://hunter2labs.s3.amazonaws.com/common.js'></script>
+  </head>
+  <body>
+    <div th:if="${message}">
+      <h2 th:text="${message}"/>
+    </div>
+    <div>
+      <form method="POST" enctype="application/x-www-form-urlencoded" action="/">
+        <input type ="text" name="query" />
+        <button type="submit">Search</button>
+        <br />
+        <table>
+          <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Headline</th>
+            <th>Phone No</th>
+          </thead>
+          <tr th:each="emp : ${employees}">
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.headline}"></td>
+            <td th:text="${emp.phoneNo}"></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+</html>
